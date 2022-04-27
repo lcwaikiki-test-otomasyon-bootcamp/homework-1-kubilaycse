@@ -37,11 +37,16 @@ public class Main {
         WebElement element3 = driver.findElement(By.id("RegisterFormView_RegisterEmail"));
         element3.sendKeys("kubilay");
         element3.sendKeys(Keys.TAB);
-
+        element3.sendKeys(Keys.TAB);
+        
         // Getting error comes from email
         driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
         WebElement element4 = driver.findElement(By.id("RegisterFormView_RegisterEmail-error"));
         String mailError = element4.getText();
+
+        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+        WebElement element5 = driver.findElement(By.id("RegisterFormView_Password-error"));
+        String passError = element5.getText();
 
         // not related by the first homework, i just wanted to try
         List<WebElement> elementList = driver.findElements(By.className("input-checkbox"));
@@ -53,7 +58,7 @@ public class Main {
         }
 
 
-        return mailError;
+        return "mailErr:" + mailError + "\n" + "passErr:" + passError;
     }
 
 
